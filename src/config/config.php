@@ -1,6 +1,9 @@
 <?php
 
 return array(
-    'apikey'   => '',
-    'password' => ''
+    'apikey'       => '',
+    'apisecret'    => '',
+    'password'     => null,
+    'domain'       => null,
+    'access_token' => null,
 );
