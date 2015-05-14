@@ -1,6 +1,6 @@
 <?php
 
-    namespace Mochaka\Shopify;
+    namespace VesninAndrey\Shopify;
 
     use Guzzle\Http\Client;
     use Guzzle\Http\Exception\ClientErrorResponseException;

@@ -1,6 +1,6 @@
 <?php 
 
-namespace Mochaka\Shopify;
+namespace VesninAndrey\Shopify;
 
 use Config;
 use Illuminate\Support\ServiceProvider;
