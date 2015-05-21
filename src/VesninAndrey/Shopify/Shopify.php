@@ -152,10 +152,10 @@ class Shopify
     public function getAccessToken( $code = '' )
     {
         $data = [ 'client_id' => $this->apikey, 'client_secret' => $this->apisecret, 'code' => $code ];
-        /** @var Response $access_token */
+
         $access_token = $this->makeRequest( 'POST', 'oauth/access_token', $data );
 
-        $this->access_token = array_get($access_token->json(), 'access_token');
+        $this->access_token = array_get($access_token, 'access_token');
 
         return $this->access_token;
     }
@@ -171,7 +171,7 @@ class Shopify
      */
     private function makeRequest( $method, $page, $data = [ ] )
     {
-        return $this->client->send( $this->client->createRequest( $method, $page, [ 'json' => $data ] ) );
+        return $this->client->send( $this->client->createRequest( $method, $page, [ 'json' => $data ] ) )->json();
     }
 
     /**
