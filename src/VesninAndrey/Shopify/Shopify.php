@@ -313,6 +313,31 @@ class Shopify
     }
 
     /**
+     * update a webhook
+     *
+     * @param  array $data
+     *
+     * @return array
+     */
+    public function updateWebhook( $webhookId, $data )
+    {
+        $d['webhook'] = ( !isset( $data['webhook'] ) ) ? $data : $data['webhook'];
+        return $this->makeRequest( 'PUT', 'webhooks/'.$webhookId.'.json', $d );
+    }
+
+    /**
+     * update a webhook
+     *
+     * @param  array $data
+     *
+     * @return array
+     */
+    public function deleteWebhook( $webhookId )
+    {
+        return $this->makeRequest( 'DELETE', 'webhooks/'.$webhookId.'.json' );
+    }
+
+    /**
      * get a list of all customers in shopify
      *
      * @return array
