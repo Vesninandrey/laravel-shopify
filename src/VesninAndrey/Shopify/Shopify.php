@@ -169,7 +169,7 @@ class Shopify
      *
      * @return array
      */
-    private function makeRequest( $method, $page, $data = [ ] )
+    public function makeRequest( $method, $page, $data = [ ] )
     {
         return $this->client->send( $this->client->createRequest( $method, $page, [ 'json' => $data ] ) )->json();
     }
@@ -382,5 +382,10 @@ class Shopify
     public function getOrder( $id )
     {
         return $this->makeRequest( 'GET', 'orders/' . $id . '.json' );
+    }
+
+    public function getShop()
+    {
+        return $this->makeRequest( 'GET', '/admin/shop.json' );
     }
 }
