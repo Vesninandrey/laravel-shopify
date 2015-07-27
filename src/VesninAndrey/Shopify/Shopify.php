@@ -143,13 +143,13 @@ class Shopify
         return static::_verifyRequest($match, $input, $this->apisecret);
     }
 
-    public static function _verify_webhook($data, $hmac_header, $apisecret)
+    public static function _verifyWebhook($data, $hmac_header, $apisecret)
     {
         $calculated_hmac = base64_encode(hash_hmac('sha256', $data, $apisecret, true));
         return ($hmac_header == $calculated_hmac);
     }
 
-    public function verify_webhook($data = null, $hmac_header = null)
+    public function verifyWebhook($data = null, $hmac_header = null)
     {
         if ($data === null) {
             $data = file_get_contents('php://input');
@@ -159,7 +159,7 @@ class Shopify
             $hmac_header = $_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'];
         }
 
-        return static::_verify_webhook($data, $hmac_header, $this->apisecret);
+        return static::_verifyWebhook($data, $hmac_header, $this->apisecret);
     }
 
     /**
