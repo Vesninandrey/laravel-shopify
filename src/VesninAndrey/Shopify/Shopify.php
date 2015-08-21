@@ -319,6 +319,20 @@ class Shopify
     }
 
     /**
+     * get a count of webhooks
+     *
+     * @return array
+     */
+    public function getWebhooksCount( $topic = '' )
+    {
+        if( !empty( $topic ) ){
+            $topic = '&topic='.$topic;
+        }
+
+        return $this->makeRequest( 'GET', 'webhooks/count.json' . $topic );
+    }
+
+    /**
      * create a webhook
      *
      * @param  array $data
