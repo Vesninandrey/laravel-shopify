@@ -421,4 +421,10 @@ class Shopify
     {
         return $this->makeRequest( 'GET', '/admin/shop.json' );
     }
+
+    public function createProductImages($productId, $data)
+    {
+        $d['image'] = (!isset($data['image']))?$data:$data['image'];
+        return $this->makeRequest('POST', 'products/' . $productId . '/images.json', $d);
+    }
 }
